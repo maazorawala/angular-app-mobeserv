@@ -1,0 +1,33 @@
+    notes:
+
+    How the angular loads the app and displays?
+    the selector in app component file has name app root which is the tag that loads the data from the component
+
+    script compoent are present in html file when we inspect which loads the angular and is the first code to be executed
+
+    1. main.ts file
+    -> bootstraps and starts by passing app module to bootstrap 
+    2. module
+    3. passes component 
+    4. reads component nad passes the selector
+    the index html file is loaded and the app root tag loads the data
+    the app root has html attached from app component html file
+
+
+    App module:
+    angular uses component, uses modules to bundle into packages
+
+    use a custom component:
+    make another file with component name
+    
+    make a .component.ts and a component html file 
+    
+    import basic necessity required and name the selector which will be used to display the component by using the given name in a tag
+
+    in module file import and give a name and define it in the decleration section. We are declaring, not calling and implementing.
+
+    when the html in the custom component file is setup, call the component by using the tag in the main component
+    
+    We can only import one component on the index.html file because calling multiple component in the intial file will cause error and we do define which component to be imported first or focus on when the page is loaded. 
+
+    create a new component : ng g c component name
