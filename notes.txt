@@ -31,3 +31,5 @@
     We can only import one component on the index.html file because calling multiple component in the intial file will cause error and we do define which component to be imported first or focus on when the page is loaded. 
 
     create a new component : ng g c component name
+
+    [] brackets to an attribute shows dynamic binding to some html attribute
