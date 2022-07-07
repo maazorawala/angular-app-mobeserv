@@ -4,3 +4,36 @@
 .white-text{
     color:white;
 }
+
+.top-head{
+    border:1px solid black;
+    display:flex;
+    align-items:center;
+    height:100%;
+    background:black;
+    color:white;
+
+}
+.top-head h1{
+    border:1px solid black;
+    width:50%;
+    height:100%;
+}
+.head-nav{
+    border:1px solid black;
+    width:50%;
+    height:100%;
+    display:flex;
+}
+.head-nav a{
+    font-size: 1.5em;
+    padding:0.2em 1em 0.2em 1em;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 250ms;
+}
+.head-nav a:hover{
+    text-decoration:underline;
+    color:aliceblue;
+     transform: translateY(-1px)
+}

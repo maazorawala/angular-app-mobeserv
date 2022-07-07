@@ -6,21 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./practice2.component.css']
 })
 export class Practice2Component implements OnInit {
-
-  showSecret=false;
-  log=[];
-  itemColor='transparent';
+  showDetails=false;
+  logDetails=[];
+  i=0;
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  onToggleDetails(){
-    this.showSecret = !this.showSecret;
-    this.log.push(this.log.length + 1);
-    
+  onToggle(){
+    this.showDetails = !this.showDetails;
+    this.i=this.i+1;
+    this.logDetails.push(new Date());
+    console.log(this.logDetails);
   }
-  
-  
+
 }

@@ -1,3 +1,146 @@
-<div>
-<p>newcomponent works!</p>
+<body>
+    
+
+<div class="container myFonts">
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <div class="top-form">
+                    <label for="search">
+                        <button class="search-icon icons-form" >
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </label>
+                    <input
+                    type="search" 
+                    name="search" 
+                    placeholder="search"  
+                    id="">
+                </div>
+                <h1 class="form-header">
+            User Details
+            </h1>
+                <div class="form-group input-fields">
+                    
+                    <input 
+                    placeholder="First name"
+                    required 
+                    minlength="3" 
+                    maxlength="10" 
+                    pattern="banana" 
+                    ngModel 
+                    name="firstName"
+                    id="firstName" 
+                    #firstName="ngModel"
+                    (change)="log(firstName)"
+                    type="text" class="form-control">
+
+                    <input 
+                    placeholder="Last name"
+                    ngModel
+                    #lastName="ngModel"
+                    (change)="logLastName(lastName)"
+                    
+                    class="form-control" 
+                    name="lastName"
+                    type="text" 
+                    name="lastName" id="lastName">
+
+                    
+                </div>
+                <div 
+                    class="alert alert-danger"  
+                    *ngIf="!firstName.valid && firstName.touched " >
+
+                        <div *ngIf="firstName.errors.required" >
+                            First name is required
+                        </div>
+
+                        <div *ngIf="firstName.errors.minlength" >
+                            First name's minimum length should be {{ firstName.errors.minlength.requiredLength }} characters  
+                        </div>
+                        <div *ngIf="firstName.errors.pattern" >
+                            First name doesnt match the pattern
+                        </div>
+                        
+                    </div>
+                    <label for="DOB">
+                        Entry time
+                    </label>
+                    <input type="datetime-local" name="datetime-local" id="">
+                    <input type="month" name="month" id="">
+                    <div class="form-group">
+                        <label for="email" >E-mail</label>
+                        <input
+                        type="email" placeholder="Enter email" name="email" id="">
+
+                        <label for="password">Password</label>
+                        <input
+                        required
+                        minlength="8"
+                        type="password" 
+                        ngModel
+                        name="password" 
+                        #password="ngModel"
+                        (change)="log(password)"
+                        placeholder="Enter password" 
+                        id="">
+
+                        <div class="alert alert-danger"
+                        *ngIf="!password.valid && password.touched "
+                        >
+                        <div *ngIf="password.errors.required" >
+                            Password is required
+                        </div>
+                        <div *ngIf="password.errors.minlength">
+                            Password too short<br>
+                            Min length: {{ password.errors.minlength.requiredLength }}
+                        </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="">
+                        <label for="tel">
+                            Mobile
+                        </label>
+                        <input type="tel" placeholder="Enter mobile no."
+                        (input)="numbersOnlyValidator($event)" 
+                        name="tel" id="">
+
+                        <label for="time">
+                            Time
+                        </label>
+                        <input type="time" name="time" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="url">
+                            URL :
+                        </label>
+                        <input type="url" placeholder="Paste github profile link" name="url" id="">
+
+                        <input type="week" name="week">
+                        
+                    </div>
+
+                <div class="form-group"> 
+                    <label for="comment">Comment</label>
+                    <textarea ngModel name="comment"  id="comment" cols="30" rows="10" class="form-control"></textarea>
+                    <input type="radio" name="radioo"  id="">
+                    <label for="radio">Radio</label>
+
+                    <input type="checkbox" name="checkbox"  id="">
+                    <label for="checkbox">checkbox</label>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </form>
+
+            
+        </div>
+    </div>
 </div>
+</body>

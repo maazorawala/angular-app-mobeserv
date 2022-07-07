@@ -1,0 +1,11 @@
+<button class="btn btn-primary" (click)="onToggle()" >Display Details</button>
+<h1>Practice2Component</h1>
+<p *ngIf="showDetails" >Secret Text: 'Sample' ID - {{i}} </p>
+<div *ngFor="let logItem of logDetails; let i = index" 
+            [ngStyle] = "{backgroundColor: i >= 4 ? 'red' : 'transparent'}"
+            [ngClass] = "{'white-text': i >= 4}"
+            >
+                {{logItem}}
+   
+                
+</div>

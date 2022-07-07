@@ -33,3 +33,4 @@
     create a new component : ng g c component name
 
     [] brackets to an attribute shows dynamic binding to some html attribute
+    
