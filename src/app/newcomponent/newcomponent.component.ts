@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
 
@@ -9,19 +9,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./newcomponent.component.css'],
 })
 export class NewcomponentComponent  {
-  form = this.fb.group({
-    lessons:this.fb.array([])
-  })
+  @ViewChild('f') signupForm:NgForm;
+  defaultValue='maaz';
+  user={
+    fistname:'',
+    lastname:'',
+    search:'',
+    dateandtime:'',
+    month:'',
+    email:'',
+    password:'',
+    mobile:'',
+    time:'',
+    url:'',
+    week:'',
+    comment:'',
+    radio:'',
+    checkbox:'',
 
-  constructor(private fb:FormBuilder){
+  };
 
-  }
-
+  
   log(x: any) {
     console.log(x);
   }
   logLastName(y: any) {
     console.log(y);
+  }
+
+  onSubmit(){
+    console.log(this.signupForm);
   }
 
 numbersOnlyValidator(event: any) {
@@ -30,6 +47,8 @@ numbersOnlyValidator(event: any) {
       event.target.value = event.target.value.replace(/[^0-9\-]/g, '');
     }
   }
+
+
 
   
 }

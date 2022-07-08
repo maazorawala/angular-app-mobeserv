@@ -1,10 +1,9 @@
-<body>
-    
+
 
 <div class="container myFonts">
     <div class="row">
-        <div class="col-xs-12">
-            <form>
+        <div class="col-xs-12"  >
+            <form (ngSubmit)="onSubmit()" #f="ngForm" > 
                 <div class="top-form">
                     <label for="search">
                         <button class="search-icon icons-form" >
@@ -15,6 +14,7 @@
                     type="search" 
                     name="search" 
                     placeholder="search"  
+                    ngModel
                     id="">
                 </div>
                 <h1 class="form-header">
@@ -67,12 +67,20 @@
                     <label for="DOB">
                         Entry time
                     </label>
-                    <input type="datetime-local" name="datetime-local" id="">
-                    <input type="month" name="month" id="">
+                    <input type="datetime-local" ngModel  name="datetime-local" id="">
+                    <input type="month" name="month" id="" ngModel>
                     <div class="form-group">
                         <label for="email" >E-mail</label>
-                        <input
-                        type="email" placeholder="Enter email" name="email" id="">
+                        <input 
+                        type="email" 
+                        required
+                        ngModel
+                        #email="ngModel"
+                        email
+                        name="email" id="">
+
+                        
+
 
                         <label for="password">Password</label>
                         <input
@@ -85,10 +93,19 @@
                         (change)="log(password)"
                         placeholder="Enter password" 
                         id="">
-
+                        
+                        <div class="alert alert-danger" *ngIf="!email.valid && email.touched" >
+                            <div *ngIf="email.errors.required" >
+                            Email is required
+                        </div>
+                            <div *ngIf="!email.errors.valid" >
+                                Please enter a valid email
+                            </div>
+                         </div>
                         <div class="alert alert-danger"
                         *ngIf="!password.valid && password.touched "
                         >
+                        
                         <div *ngIf="password.errors.required" >
                             Password is required
                         </div>
@@ -108,39 +125,59 @@
                             Mobile
                         </label>
                         <input type="tel" placeholder="Enter mobile no."
-                        (input)="numbersOnlyValidator($event)" 
+                        (input)="numbersOnlyValidator($event)"  ngModel
                         name="tel" id="">
 
                         <label for="time">
                             Time
                         </label>
-                        <input type="time" name="time" id="">
+                        <input type="time" name="time" ngModel id="">
                     </div>
 
                     <div class="form-group">
                         <label for="url">
                             URL :
                         </label>
-                        <input type="url" placeholder="Paste github profile link" name="url" id="">
+                        <input type="url" placeholder="Paste github profile link" name="url" ngModel id="">
 
-                        <input type="week" name="week">
+                        <input type="week" name="week" ngModel>
                         
                     </div>
 
                 <div class="form-group"> 
                     <label for="comment">Comment</label>
                     <textarea ngModel name="comment"  id="comment" cols="30" rows="10" class="form-control"></textarea>
-                    <input type="radio" name="radioo"  id="">
+                    <input type="radio" name="radio" ngModel id="radio">
                     <label for="radio">Radio</label>
 
-                    <input type="checkbox" name="checkbox"  id="">
-                    <label for="checkbox">checkbox</label>
+                    <input type="checkbox" ngModel name="checkbox"  id="">
+                    <label for="checkbox"  >checkbox</label>
                 </div>
-                <button class="btn btn-primary">Submit</button>
+                <input type="submit" value="Submit" class="btn btn-primary">
             </form>
 
             
         </div>
     </div>
+    
 </div>
-</body>
+
+<div class="container myFonts">
+    
+            <h3>Your data</h3>
+            <p>Search:</p>
+            <p>FirstName:</p>
+            <p>LastName:</p>
+            <p>Time: </p>
+            <p>Month:</p>
+            <p>Email:</p>
+            <p>Password: </p>
+            <p>Mobile</p>
+            <p>Time</p>
+            <p>URL: </p>
+            <p>Week: </p>
+            <p>Comment:</p>
+            <p>radio:</p>
+            <p>Checkbox: </p>
+        
+    </div>

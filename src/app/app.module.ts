@@ -26,7 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
     AlertModule.forRoot(),
     BrowserAnimationsModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
