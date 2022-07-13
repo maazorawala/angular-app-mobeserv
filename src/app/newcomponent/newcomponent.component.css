@@ -37,7 +37,7 @@ input{
 .form-header{
     display: flex;
     margin:auto;
-    
+    font-family: 'Montserrat', sans-serif;
     justify-content:center;
     align-items:center;
     align-self: center;

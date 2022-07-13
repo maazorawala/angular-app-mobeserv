@@ -4,6 +4,10 @@
     <div class="row">
         <div class="col-xs-12"  >
             <form (ngSubmit)="onSubmit()" #f="ngForm" > 
+                <div class="user-data"
+                ngModelGroup="userData"
+                #userData="ngModelGroup"
+                >
                 <div class="top-form">
                     <label for="search">
                         <button class="search-icon icons-form" >
@@ -15,7 +19,7 @@
                     name="search" 
                     placeholder="search"  
                     ngModel
-                    id="">
+                    id="search">
                 </div>
                 <h1 class="form-header">
             User Details
@@ -27,26 +31,37 @@
                     required 
                     minlength="3" 
                     maxlength="10" 
-                    pattern="banana" 
-                    ngModel 
+                    pattern="maaz" 
                     name="firstName"
                     id="firstName" 
                     #firstName="ngModel"
                     (change)="log(firstName)"
-                    type="text" class="form-control">
+                    type="text" class="form-control"
+                    [ngModel]="defaultValue"
+                    >
 
                     <input 
                     placeholder="Last name"
                     ngModel
                     #lastName="ngModel"
                     (change)="logLastName(lastName)"
-                    
                     class="form-control" 
                     name="lastName"
                     type="text" 
                     name="lastName" id="lastName">
 
                     
+                </div>
+                <div class="form-group">
+                    <textarea 
+                    class="form-control"
+                    id="textArea"
+                    name="questionAnswer" 
+                    rows="1"
+                    [(ngModel)]="answernew"
+                    placeholder="Enter text"
+                    ></textarea>
+
                 </div>
                 <div 
                     class="alert alert-danger"  
@@ -64,11 +79,11 @@
                         </div>
                         
                     </div>
-                    <label for="DOB">
+                    <label for="datetime-local">
                         Entry time
                     </label>
-                    <input type="datetime-local" ngModel  name="datetime-local" id="">
-                    <input type="month" name="month" id="" ngModel>
+                    <input type="datetime-local" ngModel  name="datetime-local" id="datetime-local">
+                    <input type="month" name="month" id="month" ngModel>
                     <div class="form-group">
                         <label for="email" >E-mail</label>
                         <input 
@@ -77,7 +92,8 @@
                         ngModel
                         #email="ngModel"
                         email
-                        name="email" id="">
+                        placeholder="Enter email"
+                        name="email" id="email">
 
                         
 
@@ -92,7 +108,7 @@
                         #password="ngModel"
                         (change)="log(password)"
                         placeholder="Enter password" 
-                        id="">
+                        id="password">
                         
                         <div class="alert alert-danger" *ngIf="!email.valid && email.touched" >
                             <div *ngIf="email.errors.required" >
@@ -101,7 +117,7 @@
                             <div *ngIf="!email.errors.valid" >
                                 Please enter a valid email
                             </div>
-                         </div>
+                        </div>
                         <div class="alert alert-danger"
                         *ngIf="!password.valid && password.touched "
                         >
@@ -126,34 +142,40 @@
                         </label>
                         <input type="tel" placeholder="Enter mobile no."
                         (input)="numbersOnlyValidator($event)"  ngModel
-                        name="tel" id="">
+                        name="tel" id="tel">
 
                         <label for="time">
                             Time
                         </label>
-                        <input type="time" name="time" ngModel id="">
+                        <input type="time" name="time" ngModel id="time">
                     </div>
 
                     <div class="form-group">
                         <label for="url">
                             URL :
                         </label>
-                        <input type="url" placeholder="Paste github profile link" name="url" ngModel id="">
+                        <input type="url" placeholder="Paste github profile link" name="url" ngModel id="url">
 
-                        <input type="week" name="week" ngModel>
+                        <input type="week" name="week" id="week"  ngModel>
                         
                     </div>
 
                 <div class="form-group"> 
                     <label for="comment">Comment</label>
-                    <textarea ngModel name="comment"  id="comment" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea ngModel name="comment"  id="comment" rows="5" class="form-control"></textarea>
                     <input type="radio" name="radio" ngModel id="radio">
                     <label for="radio">Radio</label>
 
-                    <input type="checkbox" ngModel name="checkbox"  id="">
+                    <input type="checkbox" ngModel name="checkbox"  id="checkbox">
                     <label for="checkbox"  >checkbox</label>
                 </div>
-                <input type="submit" value="Submit" class="btn btn-primary">
+                <input 
+                
+                type="submit" 
+                value="Submit" 
+                class="btn btn-primary">
+
+                </div>
             </form>
 
             
@@ -163,21 +185,23 @@
 </div>
 
 <div class="container myFonts">
+
     
-            <h3>Your data</h3>
-            <p>Search:</p>
-            <p>FirstName:</p>
-            <p>LastName:</p>
-            <p>Time: </p>
-            <p>Month:</p>
-            <p>Email:</p>
-            <p>Password: </p>
-            <p>Mobile</p>
-            <p>Time</p>
-            <p>URL: </p>
-            <p>Week: </p>
-            <p>Comment:</p>
-            <p>radio:</p>
-            <p>Checkbox: </p>
+            <h1 style="color:black" >Your data</h1>
+            <p>Search: {{finalObj.search}} </p>
+            <p>FirstName: {{finalObj.firstname}} </p>
+            <p>LastName: {{finalObj.lastname}} </p>
+            <p>Your text: {{finalObj.textarea}}</p>
+            <p>Time:{{finalObj.entryTime}} </p>
+            <p>Month: {{finalObj.month}} </p>
+            <p>Email: {{finalObj.email}} </p>
+            <p>Password: {{finalObj.password}} </p>
+            <p>Mobile: {{finalObj.mobile}}  </p>
+            <p>Time: {{finalObj.time}} </p>
+            <p>URL: {{finalObj.url}} </p>
+            <p>Week: {{finalObj.week}} </p>
+            <p>Comment: {{finalObj.comment}} </p>
+            <p>radio: {{finalObj.radio}} </p>
+            <p>Checkbox: {{finalObj.checkbox}}  </p>
         
     </div>
