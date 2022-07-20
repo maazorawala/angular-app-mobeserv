@@ -1,0 +1,206 @@
+<div class="container myFonts">
+        <div class="row">
+    <div class="col-xs-12">
+        <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+        >
+        <div class="top-form">
+            <label for="search">
+                <button class="search-icon icons-form">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </label>
+            <input
+            type="search"
+            name="search"
+            placeholder="search"
+            id="search"
+            formControlName="search"
+            />
+        </div>
+        <h1 class="form-header">User Details</h1>
+        <div class="form-group input-fields">
+            
+            <div class="user-data"
+            formGroupName="userData"
+            >
+            <input
+                placeholder="First name"
+                name="firstName"
+                id="firstName"
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+            />
+        
+        
+            <input
+                placeholder="Last name"
+                class="form-control"
+                name="lastName"
+                type="text"
+                name="lastName"
+                id="lastName"
+                formControlName="lastName"
+    
+            />
+        
+        </div>
+    </div>
+        
+
+            <div class="form-group"  
+            >
+            <textarea
+                class="form-control"
+                id="textArea"
+                name="questionAnswer"
+                rows="1"
+                placeholder="Enter text"
+                formControlName="textArea"
+            ></textarea>
+            </div>
+
+        
+        <label for="datetimelocal"> Entry time </label>
+        <input
+            type="datetime-local"
+            name="datetimelocal"
+            id="datetimelocal"
+            formControlName="entryTime"
+        />
+        <input type="month" name="month" id="month"  />
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            id="email"
+            formControlName="email"
+            />
+
+            <label for="password">Password</label>
+            <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            id="password"
+            formControlName="password"
+        />
+        </div>
+
+        <div class="form-group">
+            <label for="tel"> Mobile </label>
+            <input
+            type="tel"
+            placeholder="Enter mobile no."
+            name="tel"
+            id="tel"
+            formControlName="mobile"
+            (input)="numbersOnlyValidator($event)"
+            />
+
+            <label for="time"> Time </label>
+            <input 
+            type="time" 
+            name="time" 
+            id="time"
+            formControlName="time"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="url"> URL : </label>
+            <input
+            type="url"
+            placeholder="Paste github profile link"
+            name="url"
+            id="url"
+            formControlName="url"
+            />
+
+            <input 
+            type="week" 
+            name="week" 
+            id="week" 
+            formControlName="week"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea
+            name="comment"
+            id="comment"
+            rows="3"
+            class="form-control"
+            formControlName="comment"
+            ></textarea>
+
+        <div class="radio" *ngFor="let paymentType of paymentTypes" >
+            <label for="radio">
+                <input
+                type="radio"
+                name="paymentMethod"
+                id="radio"
+                formControlName="paymentMethod"
+                [value]="paymentType"
+                >
+                {{paymentType}}
+            </label>
+            </div>
+
+            <div class="form-group" >
+            <label for="dropdown">
+                Dropdown
+            </label>
+            <select 
+            name="dropDown" 
+            id="dropDown"
+            formControlName="dropDown"
+            >
+            <option  
+             *ngFor="let dropD of dropDownArray"
+            [value]="dropD" 
+            > 
+        {{dropD}}
+        </option>
+
+            </select>
+            </div>
+
+            <div class="form-group" *ngFor="let jobCheckBox of jobSearchArray"   >
+                <label for="jobSearch">
+                    <input 
+                    type="checkbox" 
+                    name="jobSearch" 
+                    id="checkbox"
+                    formControlName="jobSearch"
+                    [value]="jobCheckBox"
+                    
+                    >
+                    {{jobCheckBox}}
+                </label>
+                
+            </div>
+        </div>
+        <input 
+        type="submit"
+        value="Submit" 
+        class="btn btn-primary"
+        />
+        </form>
+    </div>
+
+
+    </div>
+    <hr>
+
+</div>
+<div class="container">
+    <pre>
+        {{formDataObj | json}}
+    </pre>
+</div>

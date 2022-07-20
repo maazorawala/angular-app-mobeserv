@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NewcomponentComponent } from './newcomponent/newcomponent.component';
 import { ServerComponent } from './server/server.component';
 import { HomeComponent } from './home/home.component';
+import { ReactivePracticeComponent } from './reactive-practice/reactive-practice.component';
+import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path:'',
     component:HomeComponent
+  },
+  {
+    path:'reactive',
+    component:ReactivePracticeComponent
+  },
+  {
+    path:'formfinal',
+    component:FormReactiveComponent
   }
 ];
 
@@ -36,4 +46,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const routingComponent = [Practice2Component, NewcomponentComponent,HomeComponent ]
+export const routingComponent = [Practice2Component, NewcomponentComponent,HomeComponent, ReactivePracticeComponent, FormReactiveComponent ]

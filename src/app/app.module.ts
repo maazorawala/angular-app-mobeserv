@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatIconModule} from '@angular/material/icon';
+import { ReactivePracticeComponent } from './reactive-practice/reactive-practice.component';
+import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
     ServersComponent,
     routingComponent,
     HomeComponent,
+    ReactivePracticeComponent,
+    FormReactiveComponent,
   ],
   imports: [
     BrowserModule,

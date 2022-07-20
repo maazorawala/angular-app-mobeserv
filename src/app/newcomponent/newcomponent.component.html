@@ -1,207 +1,276 @@
-
-
 <div class="container myFonts">
-    <div class="row">
-        <div class="col-xs-12"  >
-            <form (ngSubmit)="onSubmit()" #f="ngForm" > 
-                <div class="user-data"
-                ngModelGroup="userData"
-                #userData="ngModelGroup"
-                >
-                <div class="top-form">
-                    <label for="search">
-                        <button class="search-icon icons-form" >
-                            <mat-icon>search</mat-icon>
-                        </button>
-                    </label>
-                    <input
-                    type="search" 
-                    name="search" 
-                    placeholder="search"  
-                    ngModel
-                    id="search">
-                </div>
-                <h1 class="form-header">
-            User Details
-            </h1>
-                <div class="form-group input-fields">
-                    
-                    <input 
-                    placeholder="First name"
-                    required 
-                    minlength="3" 
-                    maxlength="10" 
-                    pattern="maaz" 
-                    name="firstName"
-                    id="firstName" 
-                    #firstName="ngModel"
-                    (change)="log(firstName)"
-                    type="text" class="form-control"
-                    [ngModel]="defaultValue"
-                    >
+  <div class="row">
+    <div class="col-xs-12">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div class="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+          <div class="top-form">
+            <label for="search">
+              <button class="search-icon icons-form">
+                <mat-icon>search</mat-icon>
+              </button>
+            </label>
+            <input
+              type="search"
+              name="search"
+              placeholder="search"
+              [(ngModel)]="formObj.search"
+              id="search"
+            />
+          </div>
+          <h1 class="form-header">User Details</h1>
+          <div class="form-group input-fields">
+            <input
+              placeholder="First name"
+              required
+              minlength="3"
+              maxlength="10"
+              pattern="maaz"
+              name="firstName"
+              id="firstName"
+              #firstName="ngModel"
+              (change)="log(firstName)"
+              type="text"
+              class="form-control"
+              [(ngModel)]="formObj.name"
+            />
 
-                    <input 
-                    placeholder="Last name"
-                    ngModel
-                    #lastName="ngModel"
-                    (change)="logLastName(lastName)"
-                    class="form-control" 
-                    name="lastName"
-                    type="text" 
-                    name="lastName" id="lastName">
+            <input
+              placeholder="Last name"
+              ngModel
+              #lastName="ngModel"
+              (change)="logLastName(lastName)"
+              class="form-control"
+              name="lastName"
+              type="text"
+              name="lastName"
+              id="lastName"
+              [(ngModel)]="formObj.lastname"
+            />
+          </div>
 
-                    
-                </div>
-                <div class="form-group">
-                    <textarea 
-                    class="form-control"
-                    id="textArea"
-                    name="questionAnswer" 
-                    rows="1"
-                    [(ngModel)]="answernew"
-                    placeholder="Enter text"
-                    ></textarea>
-
-                </div>
-                <div 
-                    class="alert alert-danger"  
-                    *ngIf="!firstName.valid && firstName.touched " >
-
-                        <div *ngIf="firstName.errors.required" >
-                            First name is required
-                        </div>
-
-                        <div *ngIf="firstName.errors.minlength" >
-                            First name's minimum length should be {{ firstName.errors.minlength.requiredLength }} characters  
-                        </div>
-                        <div *ngIf="firstName.errors.pattern" >
-                            First name doesnt match the pattern
-                        </div>
-                        
-                    </div>
-                    <label for="datetime-local">
-                        Entry time
-                    </label>
-                    <input type="datetime-local" ngModel  name="datetime-local" id="datetime-local">
-                    <input type="month" name="month" id="month" ngModel>
-                    <div class="form-group">
-                        <label for="email" >E-mail</label>
-                        <input 
-                        type="email" 
-                        required
-                        ngModel
-                        #email="ngModel"
-                        email
-                        placeholder="Enter email"
-                        name="email" id="email">
-
-                        
-
-
-                        <label for="password">Password</label>
-                        <input
-                        required
-                        minlength="8"
-                        type="password" 
-                        ngModel
-                        name="password" 
-                        #password="ngModel"
-                        (change)="log(password)"
-                        placeholder="Enter password" 
-                        id="password">
-                        
-                        <div class="alert alert-danger" *ngIf="!email.valid && email.touched" >
-                            <div *ngIf="email.errors.required" >
-                            Email is required
-                        </div>
-                            <div *ngIf="!email.errors.valid" >
-                                Please enter a valid email
-                            </div>
-                        </div>
-                        <div class="alert alert-danger"
-                        *ngIf="!password.valid && password.touched "
-                        >
-                        
-                        <div *ngIf="password.errors.required" >
-                            Password is required
-                        </div>
-                        <div *ngIf="password.errors.minlength">
-                            Password too short<br>
-                            Min length: {{ password.errors.minlength.requiredLength }}
-                        </div>
-
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="">
-                        <label for="tel">
-                            Mobile
-                        </label>
-                        <input type="tel" placeholder="Enter mobile no."
-                        (input)="numbersOnlyValidator($event)"  ngModel
-                        name="tel" id="tel">
-
-                        <label for="time">
-                            Time
-                        </label>
-                        <input type="time" name="time" ngModel id="time">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="url">
-                            URL :
-                        </label>
-                        <input type="url" placeholder="Paste github profile link" name="url" ngModel id="url">
-
-                        <input type="week" name="week" id="week"  ngModel>
-                        
-                    </div>
-
-                <div class="form-group"> 
-                    <label for="comment">Comment</label>
-                    <textarea ngModel name="comment"  id="comment" rows="5" class="form-control"></textarea>
-                    <input type="radio" name="radio" ngModel id="radio">
-                    <label for="radio">Radio</label>
-
-                    <input type="checkbox" ngModel name="checkbox"  id="checkbox">
-                    <label for="checkbox"  >checkbox</label>
-                </div>
-                <input 
-                
-                type="submit" 
-                value="Submit" 
-                class="btn btn-primary">
-
-                </div>
-            </form>
-
-            
+          <div class="form-group">
+            <textarea
+              class="form-control"
+              id="textArea"
+              name="questionAnswer"
+              rows="1"
+              [(ngModel)]="formObj.answernew"
+              placeholder="Enter text"
+            ></textarea>
+          </div>
         </div>
+
+        <div
+          class="alert alert-danger"
+          *ngIf="!firstName.valid && firstName.touched"
+        >
+          <div *ngIf="firstName.errors.required">First name is required</div>
+
+          <div *ngIf="firstName.errors.minlength">
+            First name's minimum length should be
+            {{ firstName.errors.minlength.requiredLength }} characters
+          </div>
+          <div *ngIf="firstName.errors.pattern">
+            First name doesnt match the pattern
+          </div>
+        </div>
+        <label for="datetimelocal"> Entry time </label>
+        <input
+          type="datetime-local"
+          [(ngModel)]="formObj.entryTime"
+          name="datetimelocal"
+          id="datetimelocal"
+        />
+        <input type="month" name="month" id="month" [(ngModel)]="formObj.entryTimeMonth" />
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            required
+            ngModel
+            #email="ngModel"
+            email
+            placeholder="Enter email"
+            name="email"
+            id="email"
+            [(ngModel)]="formObj.email"
+          />
+
+          <label for="password">Password</label>
+          <input
+            required
+            minlength="8"
+            type="password"
+            [(ngModel)]="formObj.password"
+            name="password"
+            #password="ngModel"
+            (change)="log(password)"
+            placeholder="Enter password"
+            id="password"
+          />
+
+          <div class="alert alert-danger" *ngIf="!email.valid && email.touched">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="!email.errors.valid">Please enter a valid email</div>
+          </div>
+          <div
+            class="alert alert-danger"
+            *ngIf="!password.valid && password.touched"
+          >
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password too short<br />
+              Min length: {{ password.errors.minlength.requiredLength }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tel"> Mobile </label>
+          <input
+            type="tel"
+            placeholder="Enter mobile no."
+            (input)="numbersOnlyValidator($event)"
+            [(ngModel)]="formObj.mobile"
+            name="tel"
+            id="tel"
+            maxlength="10"
+            minlength="10"
+            #tel="ngModel"
+            pattern="^[7-9][0-9]{9}$"
+            required
+            (change)="log(tel)"
+          />
+
+          <label for="time"> Time </label>
+          <input type="time" name="time" [(ngModel)]="formObj.time" id="time" />
+        </div>
+        <div class="alert alert-danger" *ngIf="tel.touched && !tel.valid">
+          <div class="tag" *ngIf="tel.errors.required">
+            Mobile No. is required.
+          </div>
+          <div class="tag" *ngIf="tel.errors.pattern">
+            Invaild Mobile Number
+          </div>
+          <div class="tag" *ngIf="!tel.errors.valid">
+            Minimum length = {{ tel.errors.minlength.requiredLength }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="url"> URL : </label>
+          <input
+            type="url"
+            placeholder="Paste github profile link"
+            name="url"
+            [(ngModel)]="formObj.url"
+            id="url"
+          />
+
+          <input type="week" name="week" id="week" [(ngModel)]="formObj.week" />
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Comment</label>
+          <textarea
+            [(ngModel)]="formObj.comment"
+            name="comment"
+            id="comment"
+            rows="5"
+            class="form-control"
+          ></textarea>
+
+          <div class="radio" *ngFor="let gender of genders">
+            <label for="radio">
+              <input
+                type="radio"
+                name="radio"
+                [(ngModel)]="formObj.radio"
+                id="radio"
+                [value]="gender"
+                required
+              />
+              {{ gender }}
+            </label>
+          </div>
+
+          <div class="form-group"  >
+            <label for="dropdown">
+              Dropdown
+            </label>
+
+            <select 
+            name="dropdown1" 
+            id="dropdown1"
+            [(ngModel)]="formObj.dropdown1"
+            >
+            <option  
+            value={{empList}}
+            *ngFor="let empList of empList"
+            
+            >{{empList}} </option>
+
+          </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dropdown2">
+              Dropdown2
+            </label>
+            <select 
+            name="dropdown2" 
+            id="dropdown2"
+            [(ngModel)]="formObj.dropdown2"
+            [compareWith]="compareByOptionId"
+            >
+              <option 
+              [ngValue]="employee"
+              *ngFor="let employee of employeeList"
+            
+              >
+                {{employee.name}}
+                
+              </option>
+            </select>
+          </div>
+
+          <input type="checkbox" [(ngModel)]="formObj.checkbox" name="checkbox" id="checkbox" />
+          <label for="checkbox">checkbox</label>
+        </div>
+        <input 
+        type="submit"
+        value="Submit" 
+        class="btn btn-primary"
+        [disabled]="!f.valid"
+        />
+      </form>
     </div>
+  </div>
+  <hr>
+  <div class="row">
+  <div class="col-xs-12">
     
+    </div>
+  </div>
 </div>
 
-<div class="container myFonts">
+<div class="container myFonts" *ngIf="submitted" >
+  <h1 style="color: black">Your data</h1>
+  <!-- <p>Search: {{ finalObj.search }}</p>
+  <p>FirstName: {{ finalObj.firstname }}</p>
+  <p>LastName: {{ finalObj.lastname }}</p>
+  <p>Your text: {{ finalObj.textarea }}</p>
+  <p>Time:{{ finalObj.entryTime }}</p>
+  <p>Month: {{ finalObj.month }}</p>
+  <p>Email: {{ finalObj.email }}</p>
+  <p>Password: {{ finalObj.password }}</p>
+  <p>Mobile: {{ finalObj.mobile }}</p>
+  <p>Time: {{ finalObj.time }}</p>
+  <p>URL: {{ finalObj.url }}</p>
+  <p>Week: {{ finalObj.week }}</p>
+  <p>Comment: {{ finalObj.comment }}</p>
+  <p>radio: {{ finalObj.radio }}</p>
+  <p>Checkbox: {{ finalObj.checkbox }}</p> -->
 
-    
-            <h1 style="color:black" >Your data</h1>
-            <p>Search: {{finalObj.search}} </p>
-            <p>FirstName: {{finalObj.firstname}} </p>
-            <p>LastName: {{finalObj.lastname}} </p>
-            <p>Your text: {{finalObj.textarea}}</p>
-            <p>Time:{{finalObj.entryTime}} </p>
-            <p>Month: {{finalObj.month}} </p>
-            <p>Email: {{finalObj.email}} </p>
-            <p>Password: {{finalObj.password}} </p>
-            <p>Mobile: {{finalObj.mobile}}  </p>
-            <p>Time: {{finalObj.time}} </p>
-            <p>URL: {{finalObj.url}} </p>
-            <p>Week: {{finalObj.week}} </p>
-            <p>Comment: {{finalObj.comment}} </p>
-            <p>radio: {{finalObj.radio}} </p>
-            <p>Checkbox: {{finalObj.checkbox}}  </p>
-        
-    </div>
+  <pre>{{ formObj | json }}</pre>
+</div>

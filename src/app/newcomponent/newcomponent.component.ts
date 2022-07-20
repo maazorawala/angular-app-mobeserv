@@ -1,3 +1,4 @@
+import { templateJitUrl } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
@@ -9,25 +10,107 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 export class NewcomponentComponent {
   @ViewChild('f') signupForm: NgForm;
   defaultValue = 'maaz';
-  answernew = '';
+  submitted = false;
+  
+  employeeList: any = [
+    {
+    id: 1,
+    name: 'E1'
+  },{
+    id: 2,
+    name: 'E2'
+  },{
+    id: 3,
+    name: 'E3'
+  },{
+    id: 4,
+    name: 'E4'
+  },{
+    id:5,
+    name:'E5'
+  }];
+  
+  empList: any = ['E1','E2','E3','E4']
+  genders = ['male', 'female'];
 
-  finalObj: any = {
-    search: '',
-    firstname: '',
-    lastname: '',
-    textarea: '',
-    entryTime: '',
-    month: '',
-    email: '',
-    password: '',
-    mobile: '',
-    time: '',
-    url: '',
-    week: '',
-    comment: '',
-    radio: '',
-    checkbox: '',
+  formObj: any = {
+    search: 'angular',
+    name: 'maaz',
+    lastname: 'orawala',
+    answernew : 'sample',
+    entryTime: '2022-07-14 15:51:39',
+    entryTimeMonth: '2024-02',
+    email: 'test@test.com',
+    password: '13245',
+    mobile: '8999979567',
+    time: '21:35',
+    url: 'https://maazorawala.github.io/Sneaker-Store-Website/',
+    week: '2004-W04',
+    comment: 'nnnnnnnnnnnnnnnnnn',
+    radio: 'male',
+    checkbox: 1,
+    dropdown1:'E4',
+    dropdown2:{}
+
   };
+  
+  constructor(){
+
+    setTimeout(()=>{
+      this.formObj.dropdown2 = {
+    "id": 5,
+    "name": "E5"
+  }
+    },500)
+
+  }
+
+  /* Return true or false if it is the selected */
+ compareByOptionId(idFist, idSecond) {
+    return idFist && idSecond && idFist.id == idSecond.id && idFist.name == idSecond.name;
+ }
+  
+  // finalObj: any = {
+  //   search: '',
+  //   firstname: '',
+  //   lastname: '',
+  //   textarea: '',
+  //   entryTime: '',
+  //   month: '',
+  //   email: '',
+  //   password: '',
+  //   mobile: '',
+  //   time: '',
+  //   url: '',
+  //   week: '',
+  //   comment: '',
+  //   radio: '',
+  //   checkbox: '',
+  // };
+
+  // suggestUserName(){
+  //   const suggestedName = "Superuser";
+  //   this.signupForm.setValue({
+  //     userData: {
+  //       firstName: suggestedName,
+  //       lastName: '',
+  //       datetimelocal: '',
+  //       search: '',
+  //       questionAnswer: 'ffefe',
+
+  //       month: '',
+  //       email: '',
+  //       password: '',
+  //       tel: '',
+  //       time: '',
+  //       url: '',
+  //       week: '',
+  //       comment: '',
+  //       radio: 'male',
+  //       checkbox: '',
+  //     },
+  //   });
+  // }
 
   log(x: any) {
     console.log(x);
@@ -35,9 +118,14 @@ export class NewcomponentComponent {
   logLastName(y: any) {
     console.log(y);
   }
+counter(i: number) {
+    return new Array(i);
+}
   onSubmit() {
+    this.submitted = true;
     console.log(this.signupForm);
-
+    console.log(this.employeeList);
+    /*
     this.finalObj.search = (<HTMLInputElement>(
       document.getElementById('search')
     )).value;
@@ -55,7 +143,7 @@ export class NewcomponentComponent {
     )).value;
 
     this.finalObj.entryTime = (<HTMLInputElement>(
-      document.getElementById('datetime-local')
+      document.getElementById('datetimelocal')
     )).value;
 
     this.finalObj.month = (<HTMLInputElement>(
@@ -89,8 +177,9 @@ export class NewcomponentComponent {
     this.finalObj.radio = (<HTMLInputElement>(document.getElementById('radio'))).value;
 
     this.finalObj.checkbox = (<HTMLInputElement>(document.getElementById('checkbox'))).value;
-
-    console.log(this.finalObj.checkbox);
+*/
+    
+    
   }
 
   numbersOnlyValidator(event: any) {

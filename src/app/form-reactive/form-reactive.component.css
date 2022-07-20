@@ -9,9 +9,8 @@
 }
 
 .input-fields{
-    display:flex;
     color:white;
-    
+    margin:auto;
 }
 
 form{

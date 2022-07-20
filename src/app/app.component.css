@@ -12,6 +12,7 @@
     height:100%;
     background:black;
     color:white;
+    
 
 }
 .top-head h1{
@@ -21,9 +22,10 @@
 }
 .head-nav{
     border:1px solid black;
-    width:50%;
+    width:80%;
     height:100%;
     display:flex;
+    
 }
 .head-nav a{
     font-size: 1.5em;
@@ -35,5 +37,5 @@
 .head-nav a:hover{
     text-decoration:underline;
     color:aliceblue;
-     transform: translateY(-1px)
+    transform: translateY(-1px)
 }

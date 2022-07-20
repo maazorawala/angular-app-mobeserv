@@ -36,3 +36,6 @@
     
 
     to do two way data binding in which angular returns the input answer on the spot. For that we make a variable in componentName.component.ts with empty string and we use banana brackets on the ngModel attribute and we set it to the variable name which we declared in the component file and use string interpelation to print the value
+
+
+    
